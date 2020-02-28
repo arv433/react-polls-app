@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import Make from './components/Make'
 
-function App() {
+function App ({ db }) {
+  const [tab, setTab] = useState(1)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>
+        <button onClick={() => setTab(0)}>Polls</button>
+        <button onClick={() => setTab(1)}>Create</button>
+        {tab === 0 && <p>Show polls</p>}
+        {tab === 1 && <Make db={db}/>}
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
